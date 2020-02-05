@@ -12,17 +12,10 @@
 }
 
 .logoImage {
-    height: 35px;
-    vertical-align: middle;
-    font-family: 'Montserrat-regular';
-
-
+  height: 35px;
+  vertical-align: middle;
   font-size: 14px;
   font-family: "Montserrat-regular";
-  color: rgb(255, 255, 255);
-  text-transform: uppercase;
-  line-height: 3.571;
-
 }
 
 /* @font-face {

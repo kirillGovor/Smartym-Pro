@@ -2,6 +2,8 @@
     height: 50px;
     color: white;
     align-items: center;
+    height: 61px;
+    margin-bottom: 10px;
 }
 
 .imageElements{
@@ -13,25 +15,16 @@
     font-family: 'Montserrat', sans-serif;
 }
 span {
-    font-size:14px;
-    font-family: 'Montserrat', sans-serif;
- 
-    
-   
-        font-size: 14px;
-        /* font-family: "Montserrat"; */
-        color: rgb(255, 255, 255);
-        text-transform: uppercase;
-        /* line-height: 3.571; */
-     
-       
-      
-      
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    line-height: 3.571;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .positionElementBlock{
-padding-top: 22px;
-text-align: left;
+    padding-top: 11px;
+    text-align: left;
 }
 
 .positionElementBlock img {
