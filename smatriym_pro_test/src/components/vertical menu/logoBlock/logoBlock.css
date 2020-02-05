@@ -1,0 +1,33 @@
+.LogoBlock{
+    height: 100px;
+    background-color: #009fbb;
+}
+
+.blockImage{
+    width: 170px;
+    padding-left: 15px;
+    /* padding-top: 10px; */
+    /* margin-top: 10px; */
+    padding-top: 31px;;
+}
+
+.logoImage {
+    height: 35px;
+    vertical-align: middle;
+    font-family: 'Montserrat-regular';
+
+
+  font-size: 14px;
+  font-family: "Montserrat-regular";
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  line-height: 3.571;
+
+}
+
+/* @font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), local('Montserrat-Regular'), url('../../../fonts//montserrat/montserrat.woff2') format('woff2'), url('../../../fonts//montserrat/montserrat.woff') format('woff'), url('../../../fonts//montserrat/montserrat.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+  } */
