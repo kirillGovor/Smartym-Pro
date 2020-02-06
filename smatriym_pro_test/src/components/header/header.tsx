@@ -5,8 +5,8 @@ const Header = () => {
   return (
     <header>
       <div>
-        <a href="#">Users List</a>
-        <span>874 users</span>
+        <p>Users List</p>
+        <span>874 users</span>s
       </div>
       <div>
         <input type="text" placeholder="search"></input>
