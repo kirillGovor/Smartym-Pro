@@ -1,7 +1,7 @@
 import React from "react";
-import "./header.css";
+import Table from "./Table";
 
-const Header = () => {
+const Content = () => {
   return (
     <header>
       <div className="BlockContent">
@@ -12,4 +12,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Content;
