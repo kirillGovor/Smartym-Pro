@@ -1,4 +1,4 @@
-export interface User {
+export interface IUser {
   email: string;
   name: string;
   type: string;
@@ -8,7 +8,8 @@ export interface User {
   id:number;
 }
 export interface AppState {
-    users: User[];
+    users: IUser[];
+    isEdding:boolean;
 }
 
 export interface SystemState {
