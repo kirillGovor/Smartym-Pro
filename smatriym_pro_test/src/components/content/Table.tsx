@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Popup from "./Popup";
+import User from "./User";
 import { AppContext } from "../contextApp";
-import { User } from "../../types/types";
+import { IUser } from "../../types/types";
 
 const Table: React.FC = () => {
   const { state, getUsers } = React.useContext(AppContext);
+ 
+
 
   useEffect(() => {
     debugger;
@@ -21,7 +23,7 @@ const Table: React.FC = () => {
         </tr>
       </thead>
       <tbody>
-        {state ? state.users.map((d: User) => <Popup {...d} />) : null}
+        {state ? state.users.map((d: IUser) => <User {...d} />) : null}
       </tbody>
     </table>
   );

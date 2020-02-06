@@ -1,7 +1,7 @@
-import {User} from "../types/types"
+import {IUser} from "../types/types"
 
 export async function getAllUsers () {
-  let users:User[] =  [
+  let users:IUser[] =  [
     {
       email: "randomEmail1",
       name: "randomName 1",
