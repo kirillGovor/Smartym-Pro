@@ -1,19 +1,17 @@
 import React from "react";
-import { IUser } from "../../types/types";
-import { AppContext } from "../contextApp";
-import Popup from "./popup";
+import { IUser } from "../../../types/types";
 
-const User = (props: IUser) => {
+
+const PopupForm = (props: IUser) => {
   //items
   const [isEditing, setIsEditing] = React.useState<boolean>(false);
-  const { state, setEdding } = React.useContext(AppContext);
+
 
   return (
     <>
       <tr
         onClick={() => {
-          debugger;
-          setEdding && setIsEditing(true);
+          setIsEditing && setIsEditing(true);
         }}
       >
         <td>{props.name}</td>
@@ -22,9 +20,9 @@ const User = (props: IUser) => {
         <td>{props.name}</td>
         <td>{props.name}</td>
       </tr>
-      {isEditing? <Popup {...props} /> : null}
+      {/* {isEditing? <Popup {...props} /> : null} */}
     </>
   );
 };
 
-export default User;
+export default PopupForm;

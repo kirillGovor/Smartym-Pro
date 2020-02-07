@@ -1,0 +1,64 @@
+table {
+    border: solid 1px gray;
+    border-radius: 4px;
+    
+}
+.tableBlock{
+    margin: 0;
+    padding-top: 28px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #ffffff;
+}
+.tableStriped > tbody > tr:nth-of-type(odd) {
+    background-color: rgb(253, 253, 253);
+  }
+
+  .tableStriped th{
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 13px;
+    color:#ffb400;
+    font-family: "Montserrat";
+    font-size: 16px;
+  }
+  
+  .table > tbody > tr > td {
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    vertical-align: middle;
+    padding-left: 5px;
+    min-width: 150px;
+    padding: 15px;
+    font-family: "Montserrat";
+    font-size: 14px;
+    text-align: left;
+    color: rgb(54, 54, 64);
+    line-height: 3.571;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  @media only screen and (max-width: 1600px) {
+    .table > tbody > tr > td {
+      min-width: auto;
+    }
+  }
+  
+  
+  
+  .userList {
+    border: 1px solid #ddd;
+  }
+  .table > tbody {
+    position: relative;
+  }
+  
+  th {
+    padding: 5px;
+    text-align: left;
+  }
+  .tableBlock {
+    overflow-y: auto;
+    position: relative;
+  }

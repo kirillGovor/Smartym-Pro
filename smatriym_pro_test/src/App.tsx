@@ -3,7 +3,7 @@ import "./App.css";
 import LogoBlock from "./components/vertical menu/logoBlock/logoBlock";
 import MenuElements from "./components/vertical menu/menuElements/MenuElements";
 import Header from "./components/header/header";
-import Table from "./components/content/Table";
+import Table from "./components/content/table/Table";
 import  ContextApp  from "../src/components/contextApp";
 
 const App = () => {
