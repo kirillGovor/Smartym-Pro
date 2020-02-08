@@ -1,10 +1,15 @@
 export interface IUser {
   email: string;
-  name: string;
-  type: string;
+  firstName :string;
+  lastName:string;
+  type: Array<string>;
+  level:Array<string>;
+  validated:string;
+  coints:string;
   comapny: string;
   country: string;
-  subscription: string;
+  subscriptionType: string;
+  subscriptionDate: string;
   id:number;
 }
 export interface AppState {
