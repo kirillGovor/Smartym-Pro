@@ -1,12 +1,12 @@
 import React from "react";
-import {AppState} from "../types/types"
+import {AppState, IUser} from "../types/types"
 import { getAllUsers } from "../services/getAllUsers";
 
 
 export interface IContextValue {
     state: AppState;
     getUsers():Promise<void>;
-    setEdding(value:boolean):void;
+    updateUser(user:IUser):void;
   }
 
 export const AppContext  = React.createContext<Partial<IContextValue>>({});
@@ -14,7 +14,7 @@ export const AppContext  = React.createContext<Partial<IContextValue>>({});
 export const AppContextProvider = AppContext.Provider;
 
 class ContextApp extends React.Component <{},AppState> {
-    constructor({}) {
+    constructor() {
         super({});
         this.state = {
         users:[],
@@ -27,8 +27,14 @@ class ContextApp extends React.Component <{},AppState> {
     this.setState ({users:allUsers});
  }
 
-  setEdding = (value:boolean) =>{
-    this.setState({isEdding:!value})
+  updateUser = (user:IUser) =>{
+    this.setState(prev => {
+      return {
+        users: prev.users.map(e =>
+          e.id === user.id ? { ...user } : e
+        )
+      };
+    });
   }
 
   render() {
@@ -37,7 +43,7 @@ class ContextApp extends React.Component <{},AppState> {
         value={{
           state: this.state,
           getUsers:this.getUsers,
-          setEdding:this.setEdding
+          updateUser:this.updateUser
         }}
       >
         {this.props.children}
