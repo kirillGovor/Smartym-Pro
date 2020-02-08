@@ -26,7 +26,7 @@ const Table: React.FC = () => {
         </tr>
       </thead>
       <tbody>
-        {state ? state.users.map((d: IUser) => <User {...d} />) : null}
+        {state ? state.users.map((d: IUser) => <User key={d.id} {...d} />) : null}
       </tbody>
     </table>
     </div>

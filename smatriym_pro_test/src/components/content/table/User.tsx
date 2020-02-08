@@ -6,23 +6,28 @@ import Popup from "../popup/popup";
 const User = (props: IUser) => {
   //items
   const [isEditing, setIsEditing] = React.useState<boolean>(false);
-  const { state, setEdding } = React.useContext(AppContext);
+
+  const setEdding = (value: boolean) => {
+    setIsEditing(value);
+  };
 
   return (
     <>
       <tr
         onClick={() => {
-          setIsEditing && setIsEditing(true);
+          setEdding(true);
         }}
       >
         <td>{props.email}</td>
-        <td>{props.name}</td>
+      <td>{props.firstName} <span>{props.lastName}</span></td>
         <td>{props.type}</td>
-        <td>{props.comapny}</td>
-        <td>{props.country}</td>
-        <td>{props.subscription}</td>
+        <td><span>{props.comapny}</span></td>
+        <td><span>{props.country}</span></td>
+        <td>{props.subscriptionDate}</td>
       </tr>
-      {isEditing? <Popup {...props} /> : null}
+      {isEditing ? (
+        <Popup item={props} setEdding={() => setEdding(false)} />
+      ) : null}
     </>
   );
 };

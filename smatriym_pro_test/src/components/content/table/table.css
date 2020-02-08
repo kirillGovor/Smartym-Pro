@@ -62,3 +62,8 @@ table {
     overflow-y: auto;
     position: relative;
   }
+
+  td span {
+    color: rgb(162, 162, 166);
+    font-weight: bold;
+  }
