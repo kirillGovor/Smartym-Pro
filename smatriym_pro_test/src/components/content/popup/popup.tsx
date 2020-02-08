@@ -1,22 +1,69 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as ReactDOM from "react-dom";
 import { IUser } from "../../../types/types";
 import "./popup.css";
 import close from "./image/exit.png";
+import { AppContext } from "../../contextApp";
 
-const Popup: React.FC<IUser> = ({
-  email,
-  name,
-  type,
-  comapny,
-  country,
-  subscription,
-  id
-}: IUser) => {
-  const [editType, setType] = React.useState<string>(type ? type : "");
+interface IPopup {
+  item: IUser;
+  setEdding(value: boolean): void;
+}
 
-  //items
-  // const { state, setEdding } = React.useContext(AppContext);
+const Popup: React.FC<IPopup> = props => {
+  const { updateUser } = useContext(AppContext);
+  const [editEmail, setEmail] = React.useState<string>(
+    props.item.email ? props.item.email : ""
+  );
+  const [editFirstName, setFirsName] = React.useState<string>(
+    props.item.firstName ? props.item.firstName : ""
+  );
+  const [editLasttName, setLastName] = React.useState<string>(
+    props.item.lastName ? props.item.lastName : ""
+  );
+  const [editType, setType] = React.useState<string[]>(
+    props.item.type ? props.item.type : []
+  );
+  const [editLevel, setLevel] = React.useState<string[]>(
+    props.item.level ? props.item.level : []
+  );
+  const [editCompany, setCompany] = React.useState<string>(
+    props.item.comapny ? props.item.comapny : ""
+  );
+  const [editCountry, setCountry] = React.useState<string>(
+    props.item.country ? props.item.country : ""
+  );
+  const [editValidated, setValidated] = React.useState<string>(
+    props.item.validated ? props.item.validated : ""
+  );
+  const [editCoints, setCoints] = React.useState<string>(
+    props.item.validated ? props.item.coints : ""
+  );
+  const [editsubscriptionType, setsubscriptionType] = React.useState<string>(
+    props.item.subscriptionType ? props.item.subscriptionType : ""
+  );
+  const [editsubscriptionDate, setsubscriptionDate] = React.useState<string>(
+    props.item.subscriptionDate ? props.item.subscriptionDate : ""
+  );
+
+  const saveUser = () => {
+    if (updateUser)
+      updateUser({
+        email: editEmail,
+        firstName: editFirstName,
+        lastName: editLasttName,
+        type: editType,
+        level: editLevel,
+        validated: editValidated,
+        coints: editCoints,
+        comapny: editCompany,
+        country: editCountry,
+        subscriptionType: props.item.subscriptionType,
+        subscriptionDate: props.item.subscriptionDate,
+        id: props.item.id
+      });
+    props.setEdding(false);
+  };
 
   return ReactDOM.createPortal(
     <div
@@ -32,76 +79,145 @@ const Popup: React.FC<IUser> = ({
         alignItems: "center"
       }}
     >
-      {/* <UpdateEmployeeForm
-            cancelClicked={this.cancelClicked}
-            item={this.props.item}
-          /> */}
       <div className="popupBlock">
         <div className="header">
           <div>
-            {" "}
-            <p> EDIT {name}</p>
-            <p>Enique ID - {id}</p>
+            <p className="edit">
+              EDIT {props.item.firstName} {props.item.lastName}
+            </p>
+            <p className="unique">unique ID - {props.item.id}</p>
           </div>
           <div>
-            <img alt ="" src ={close}></img>
+            <img
+              onClick={() => props.setEdding(false)}
+              alt=""
+              src={close}
+            ></img>
           </div>
         </div>
         <div className="content">
           <div>
             <div>
-              <p>E-MAIL</p>
-              <input type="text"></input>
+              <span>
+                <p className="label">E-MAIL</p>
+                <input
+                  className="email"
+                  value={editEmail}
+                  onChange={newValue => {
+                    debugger;
+                    setEmail(newValue.target.value);
+                  }}
+                  type="text"
+                ></input>
+              </span>
             </div>
             <div>
-              <p>FIRST NAME</p>
-              <input type="text"></input>
+              <span>
+                <p className="label">FIRST NAME</p>
+                <input
+                  value={editFirstName}
+                  onChange={newValue => setFirsName(newValue.target.value)}
+                  className="firstname"
+                  type="text"
+                ></input>
+              </span>
             </div>
             <div>
-              <p>LAST NAME</p>
-              <input type="text"></input>
+              <span>
+                <p className="label">LAST NAME</p>
+                <input
+                  value={editLasttName}
+                  onChange={newValue => setLastName(newValue.target.value)}
+                  className="lastname"
+                  type="text"
+                ></input>
+              </span>
             </div>
           </div>
           <div>
             <div>
-              <p>COUNTRY</p>
-              <input type="text"></input>
+              <span>
+                <p className="label">COUNTRY</p>
+                <input
+                  value={editCountry}
+                  onChange={newValue => setCountry(newValue.target.value)}
+                  className="country"
+                  type="text"
+                ></input>
+              </span>
             </div>
             <div>
-              <p>COMAPNY</p>
-              <input type="text"></input>
+              <span>
+                <p className="label">COMAPNY</p>
+                <input
+                  value={editCompany}
+                  onChange={newValue => setCompany(newValue.target.value)}
+                  className="company"
+                  type="text"
+                ></input>
+              </span>
             </div>
           </div>
           <div>
             <div>
-              <p>TYPE</p>
-              <input type="text"></input>
-            </div>{" "}
-            //select
-            <div>
-              <p>LEVEL</p>
-              <input type="text"></input>
-            </div>{" "}
-            //select
-            <div>
-              <p>VALIDATED</p>
-              <input type="text"></input>
+              <span>
+                <p className="label">TYPE</p>
+                <select>
+                  {editType.map((item, index) => {
+                    return <option key={index}>{item}</option>;
+                  })}
+                </select>
+              </span>
             </div>
             <div>
-              <p>COINTS</p>
-              <input type="text"></input>
+              <span>
+                <p className="label">LEVEL</p>
+                <select>
+                  {editLevel.map((item, index) => {
+                    return <option key={index}>{item}</option>;
+                  })}
+                </select>
+              </span>
+            </div>
+            <div>
+              <span>
+                <p className="label">VALIDATED</p>
+                <input
+                  value={editValidated}
+                  onChange={newValue => setValidated(newValue.target.value)}
+                  className="validated"
+                  type="text"
+                ></input>
+              </span>
+            </div>
+            <div>
+              <span>
+                <p className="label">COINTS</p>
+                <input
+                  value={editCoints}
+                  onChange={newValue => setCoints(newValue.target.value)}
+                  className="coints"
+                  type="text"
+                ></input>
+              </span>
             </div>
           </div>
-        </div>
-        <div>
-          <div>
-            <p>Subscription type - {type}</p>
-            <p>Subscription date - {}</p> //date
-          </div>
-          <div>
-            <button>RESET PASSWORD</button>
-            <button>REVOCE ACCESS</button>
-            <button>SAVE</button>
+          <div className="buttonsBlock">
+            <div className="subscriptionblock">
+              <p className="subscriptionText">
+                Subscription type - <span>{props.item.subscriptionType}</span>
+              </p>
+              <p className="subscriptionText">
+                Subscription date - <span>{props.item.subscriptionDate}</span>
+              </p>
+            </div>
+            <div>
+              <button className="resetPassword">RESET PASSWORD</button>
+              <button className="revokeAcces">REVOKE ACCESS</button>
+              <button onClick={saveUser} className="save">
+                SAVE
+              </button>
+            </div>
           </div>
         </div>
       </div>
